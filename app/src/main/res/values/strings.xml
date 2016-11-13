@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">ViewPager</string>
+    <string name="specialsText">优惠活动</string>
+    <string name="search_icon">搜索</string>
+    <string name="hint">VIP卡余额查询</string>
+    <string name="offer_text">充值大优惠\n充100送10元\n充500送100元</string>
+    <string name="offer_text1">饮料大优惠\n买第一杯\n第二杯半价</string>
+    <string name="tabbed_menu_title">菜\t\t\t单</string>
+    <string name="title_activity_menu_details">MenuDetails</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="main_ingredient">主要食材：\t</string>
+    <string name="price">价格：\t</string>
+    <string name="order">点 菜</string>
+    <string name="title_order">点   \t  单</string>
+    <string name="title_1">菜  品</string>
+    <string name="title_2">单  价</string>
+    <string name="title_3">数  量</string>
+    <string name="title_4">合计：金额</string>
+    <string name="vipTitle">VIP 持卡人---余额查询</string>
+    <string name="cardNum">卡 号：</string>
+    <string name="password">密 码：</string>
+    <string name="verification_code">验证码：</string>
+    <string name="text">查 询</string>
+    <string name="hint1">提示: 磁卡初始密码为卡背面的6位数字</string>
+    <string name="mytoast_text">验证码输入正确！</string>
+    <string name="mytoast1_text">验证码输入有误，请重新输入！</string>
+    <string name="search_hint">请输入菜名</string>
+    <string name="title_sum">总消费金额：</string>
+    <string name="RMB">元</string>
+    <string name="confirm">确认下单</string>
+
+</resources>

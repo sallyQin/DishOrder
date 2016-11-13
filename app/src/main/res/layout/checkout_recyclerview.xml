@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="#CDB7B5"
+    android:showDividers="end"
+    android:dividerHeight="1dp"
+    android:divider="@drawable/dashline"
+    android:layout_height="wrap_content">
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="32dp">
+    <TextView
+        android:id="@+id/checkout_Num"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_width="30dp"
+        android:layout_height="match_parent" />
+    <View
+        android:background="#6E6E6E"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"/>
+    <TextView
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:id="@+id/checkout_dishName"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent" />
+    <View
+        android:background="#6E6E6E"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"/>
+    <TextView
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:id="@+id/checkout_price"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_width="40dp"
+        android:layout_height="match_parent" />
+    <View
+        android:background="#6E6E6E"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"/>
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/increase"
+        fresco:roundAsCircle="true"
+        android:paddingLeft="1dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        fresco:placeholderImage="@drawable/increase_icon"
+        android:layout_width="25dp"
+        android:layout_height="25dp" />
+    <TextView
+        android:id="@+id/checkout_quantity"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_width="38dp"
+        android:layout_height="match_parent" />
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/decrease"
+        android:layout_gravity="center_vertical"
+        android:paddingRight="1dp"
+        android:gravity="center"
+        fresco:roundAsCircle="true"
+        fresco:placeholderImage="@drawable/decrease_icon"
+        android:layout_width="25dp"
+        android:layout_height="25dp"/>
+    <View
+        android:background="#6E6E6E"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"/>
+    <TextView
+        android:id="@+id/checkout_sum"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_width="95dp"
+        android:layout_height="match_parent" />
+  </LinearLayout>
+</LinearLayout>
