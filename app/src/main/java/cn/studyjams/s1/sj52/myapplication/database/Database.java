@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Database {
    public static String string[] = {"特色菜","特价菜","热菜.炒菜","冷菜","营养汤羹","甜点.冷饮","特色主食","酒水.饮料" };
-   public static ArrayList arrayList = new ArrayList<String>();
+   public static List<String> searchHistoryList = new ArrayList<String>();
 
    Uri dishPics1[];         /** 菜式图片*/
    String dishName1[] = {"辣响划水","蜜汁东坡肉","铁板芋头","日式鳗鱼饭","素香饼","豌豆堡垒","蟹黄银鱼","铁板蜜牛肉"};    /** 菜名*/

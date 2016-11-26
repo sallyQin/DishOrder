@@ -36,7 +36,7 @@ public class CategoryAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view,set the view's size, margins, padding and layout parameters
 
-        View item = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview, null);
+        View item = LayoutInflater.from(parent.getContext()).inflate(R.layout.tab_recyclerview, null);
         ViewHolder vh = new ViewHolder(item);
         return vh;
     }
