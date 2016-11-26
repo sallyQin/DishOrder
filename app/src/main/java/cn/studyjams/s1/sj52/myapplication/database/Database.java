@@ -2,12 +2,15 @@ package cn.studyjams.s1.sj52.myapplication.database;
 
 import android.net.Uri;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Apc on 2016/7/22.
  */
 public class Database {
    public static String string[] = {"特色菜","特价菜","热菜.炒菜","冷菜","营养汤羹","甜点.冷饮","特色主食","酒水.饮料" };
-
+   public static ArrayList arrayList = new ArrayList<String>();
 
    Uri dishPics1[];         /** 菜式图片*/
    String dishName1[] = {"辣响划水","蜜汁东坡肉","铁板芋头","日式鳗鱼饭","素香饼","豌豆堡垒","蟹黄银鱼","铁板蜜牛肉"};    /** 菜名*/
@@ -60,4 +63,5 @@ public class Database {
    String soup[ ] = {"soup1","soup2","soup3","soup4","soup5","soup6","soup7","soup8"};
    String dessert[] = {"dessert1","dessert2","dessert3","dessert4","dessert5","dessert6","dessert7","dessert8"};
    String main_staple[] ={"main_staple1","main_staple2","main_staple3","main_staple4","main_staple5","main_staple6","main_staple7","main_staple8"};
- }
+
+}

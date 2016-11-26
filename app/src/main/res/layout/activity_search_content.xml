@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:zhy="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".SearchContentActivity">
-  <LinearLayout
+    <LinearLayout
         android:orientation="horizontal"
         android:layout_marginTop="12dp"
         android:layout_width="match_parent"
@@ -50,7 +50,7 @@
                 android:layout_width="22dp"
                 android:layout_height="28dp"
                 android:layout_marginRight="25dp"/>
-      </FrameLayout>
+        </FrameLayout>
         <ImageView
             android:id="@+id/search_go"
             android:layout_marginRight="18dp"
@@ -58,6 +58,64 @@
             android:layout_width="32dp"
             android:layout_height="32dp" />
     </LinearLayout>
+<LinearLayout
+    android:layout_marginTop="20dp"
+    android:background="#C1FFC1"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="28dp">
+    <TextView
+        android:paddingRight="2dp"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="18dp"
+        android:drawableLeft="@drawable/history_icon"
+        android:textStyle="bold"
+        android:text="历史搜素"
+        android:textColor="#71C671"
+        android:textSize="15sp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+    <View
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"/>
+    <ImageView
+        android:id="@+id/history_bin"
+        android:background="@drawable/garbage_bin_history"
+        android:gravity="bottom"
+        android:layout_marginRight="10dp"
+        android:layout_gravity="bottom"
+        android:layout_width="28dp"
+        android:layout_height="match_parent" />
+</LinearLayout>
+
+    <com.zhy.view.flowlayout.TagFlowLayout
+        android:id="@+id/flowlayout"
+        zhy:max_select="1"
+        android:layout_width="match_parent"
+        android:background="#C1FFC1"
+        android:layout_height="120dp"
+        android:paddingTop="8dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:padding="8dp">
+    </com.zhy.view.flowlayout.TagFlowLayout>
+
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/history_search"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:background="#C1FFC1"-->
+        <!--android:layout_height="120dp"-->
+       <!--android:paddingTop="8dp"-->
+        <!--android:layout_marginBottom="2dp"-->
+        <!--android:layout_marginLeft="2dp"-->
+        <!--android:layout_marginRight="2dp"-->
+        <!--android:padding="8dp"-->
+        <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+        <!--app:layoutManager="android.support.v7.widget.LinearLayoutManager"-->
+        <!--android:orientation="horizontal">-->
+    <!--</android.support.v7.widget.RecyclerView>-->
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/search_result"

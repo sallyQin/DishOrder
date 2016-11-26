@@ -1,17 +1,26 @@
 package cn.studyjams.s1.sj52.myapplication;
 
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
-
+import com.zhy.view.flowlayout.FlowLayout;
+import com.zhy.view.flowlayout.TagAdapter;
+import com.zhy.view.flowlayout.TagFlowLayout;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
+import cn.studyjams.s1.sj52.myapplication.database.Database;
 import cn.studyjams.s1.sj52.myapplication.database.DishDatabase;
 
 public class SearchContentActivity extends AppCompatActivity {
@@ -20,12 +29,12 @@ public class SearchContentActivity extends AppCompatActivity {
     EditText search_context;
     ImageView cancel_action;
     ImageView search_go;
-    public static String Strsearch_content;
+    public static String StrSearch_content;
     public static int search_num = 0;
     RecyclerView search_result_recyclerV;
     public static Map<String,DishDatabase> map_search = new HashMap<>();
 
-
+    private TagAdapter<String> mAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,12 +83,13 @@ public class SearchContentActivity extends AppCompatActivity {
                 search_num = 0;
 
                 if(search_context.getText() != null){
-                    Strsearch_content = search_context.getText().toString().trim();
-                    Strsearch_content = Strsearch_content.replaceAll("[\\p{Punct}\\p{Space}\\p{XDigit}\\p{Lower}\\p{Upper}]+", "");//去除字符串中的数字、标点、英文字母、空格等。
-                    if(!Strsearch_content.isEmpty()){
+//                    Database.arrayList.add(StrSearch_content);//
+                    StrSearch_content = search_context.getText().toString().trim();
+                    StrSearch_content = StrSearch_content.replaceAll("[\\p{Punct}\\p{Space}\\p{XDigit}\\p{Lower}\\p{Upper}]+", "");//去除字符串中的数字、标点、英文字母、空格等。
+                    if(!StrSearch_content.isEmpty()){
                         for (int i = 0;i<DishDatabase.dish_name.length;i++){
                             for (int j = 0;j<DishDatabase.dish_name[i].length;j++){
-                                if((DishDatabase.dish_name[i][j].contains(Strsearch_content))){
+                                if((DishDatabase.dish_name[i][j].contains(StrSearch_content))){
                                     DishDatabase.dishDatabase_search = DishDatabase.getMenuData().get("["+i+"]["+j+"]");
                                     map_search.put(""+search_num,DishDatabase.dishDatabase_search);
                                     search_num +=1;
@@ -107,6 +117,52 @@ public class SearchContentActivity extends AppCompatActivity {
                 }
                }
         });
+
+        final TagFlowLayout  mFlowLayout = (TagFlowLayout) findViewById(R.id.flowlayout);
+        final String [] arr= new String[]{"长小","他"," 刚刚到刚","高大哥大哥哈嘎","长小","他"," 刚刚到刚dadadadadada","高大哥大哥哈嘎","长小","他"," 刚刚到刚","高大哥大哥哈嘎","长小","他"," 刚刚到刚","高大哥大哥哈嘎"};
+        mFlowLayout.setAdapter(new TagAdapter<String>(arr)
+        {
+            @Override
+            public View getView(FlowLayout parent, int position, String arrayList) {
+
+                TextView tv = (TextView) getLayoutInflater().inflate(R.layout.history_result_recyclerview, mFlowLayout, false);
+                String sa = arr[position];
+                tv.setText(sa);
+
+//                if(!Database.arrayList.isEmpty()){
+//                    String s = Database.arrayList.get(position).toString();
+//                    tv.setText(s );
+//                }
+               return tv;
+            }
+
+        });
+
+//        mFlowLayout.setOnTagClickListener(new TagFlowLayout.OnTagClickListener()
+//        {
+//            @Override
+//            public boolean onTagClick(View view, int position, FlowLayout parent)
+//            {
+//
+//                        Toast.makeText(this,"我是中国人",Toast.LENGTH_LONG).show();
+//                return true;
+//            }
+//        });
+//
+//        mFlowLayout.setOnSelectListener(new TagFlowLayout.OnSelectListener()
+//        {
+//            @Override
+//            public void onSelected(Set<Integer> selectPosSet)
+//            {
+//                setTitle("choose:" + selectPosSet.toString());
+//            }
+//        });
+
+//        //预先设置选中
+//        mAdapter.setSelectedList(1,3,5,7,8,9);
+////获得所有选中的pos集合
+//        mFlowLayout.getSelectedList();
+
 
     }
 }
