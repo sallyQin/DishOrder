@@ -75,13 +75,13 @@ public class VipCardCheckActivity extends AppCompatActivity {
                     if (numStr.equals(etCheck.getText().toString())) {//自定义toast字体。
                         inflater = LayoutInflater
                                 .from(getApplicationContext());
-                        view = inflater.inflate(R.layout.mytoast,(ViewGroup) findViewById(R.id.vip_pager),false);
+                        view = inflater.inflate(R.layout.my_toast,(ViewGroup) findViewById(R.id.vip_pager),false);
                         toast = Toast.makeText(VipCardCheckActivity.this,"验证码输入正确！",Toast.LENGTH_LONG);
                         toast.setView(view);
                         toast.show();
 
                     } else {//自定义toast字体
-                        view1 = inflater.inflate(R.layout.mytoast_1,(ViewGroup) findViewById(R.id.vip_pager),false);
+                        view1 = inflater.inflate(R.layout.my_toast_1,(ViewGroup) findViewById(R.id.vip_pager),false);
                         toast1 = Toast.makeText(VipCardCheckActivity.this,"验证码输入有误，请重新输入！",Toast.LENGTH_LONG);
                         toast1.setView(view1);
                         toast1.show();

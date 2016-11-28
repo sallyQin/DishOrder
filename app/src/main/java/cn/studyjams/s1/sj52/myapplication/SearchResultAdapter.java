@@ -26,8 +26,7 @@ class SearchResultAdapter extends RecyclerView.Adapter{
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_result_recyclerview, parent, false);
-        ViewHold viewhHold = new ViewHold(view);
-        return viewhHold;
+        return new ViewHold(view);
     }
 
     @Override
@@ -40,7 +39,7 @@ class SearchResultAdapter extends RecyclerView.Adapter{
         ((TextView) holder.itemView.findViewById(R.id.rv1_txt3)).setText(""+dishSearchDatabase.price1);
 
         Button orderBtn = (Button) holder.itemView.findViewById(R.id.order);
-        orderBtn.setOnClickListener(new View.OnClickListener() { // 设置searchResult页面的“点菜”监听器
+        orderBtn.setOnClickListener(new View.OnClickListener() {  // 设置searchResult页面的“点菜”监听器
             @Override
             public void onClick(View v) {  //总点单 的List 加载
                 Intent intent = new Intent(searchResult,CheckOutActivity.class);

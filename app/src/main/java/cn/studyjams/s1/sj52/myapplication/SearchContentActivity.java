@@ -34,8 +34,9 @@ public class SearchContentActivity extends AppCompatActivity {
     public static String StrSearch_content;
     public static int search_num = 0;
     RecyclerView search_result_recyclerV;
+    SearchResultAdapter searchResultAdapter;
+    ImageView history_bin;
     public static Map<String,DishDatabase> map_search = new HashMap<>();
-
     TagFlowLayout  mFlowLayout;
     private TagAdapter<String> mAdapter;
     @Override
@@ -48,62 +49,72 @@ public class SearchContentActivity extends AppCompatActivity {
         cancel_action = (ImageView) findViewById(R.id.cancel_action);
         search_go= (ImageView) findViewById(R.id.search_go);
 
-        return_home.setOnClickListener(new View.OnClickListener() { //设置“返回主界面”的监听器
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SearchContentActivity.this,MainActivity.class);
-                startActivity(intent);
-            }
-        });
+        /** 设置“返回主界面”的监听器 **/
 
-        search_context.setOnClickListener(new View.OnClickListener() { //设置 “编辑框”监听器
-            @Override
-            public void onClick(View v) {
-                cancel_action.setVisibility(View.VISIBLE);
-                cancel_action.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if(search_context.getText() != null) {
-                            search_context.setText("");
-                            cancel_action.setVisibility(View.INVISIBLE);
-
-                        }
-                    }
-                });
-            }
-        });
-
-
-
-
-        search_go.setOnClickListener(new View.OnClickListener() {  //搜索"GO"事件监听
-
+        /** 搜索"GO"事件监听 **/
+        search_go.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-
                 map_search.clear();
                 search_num = 0;
-
                 if(search_context.getText() != null){
+                    return_home.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(SearchContentActivity.this,MainActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+
+                    /** 设置 “编辑框”监听器 **/
+                    search_context.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            cancel_action.setVisibility(View.VISIBLE);
+                            cancel_action.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    if(search_context.getText() != null) {
+                                        search_context.setText("");
+                                        cancel_action.setVisibility(View.INVISIBLE);
+
+                                    }
+                                }
+                            });
+                        }
+                    });
+
+
+                    history_bin = (ImageView) findViewById(R.id.history_bin);
+                    /** 设置历史搜索清空键 的事件监听 **/
+                    history_bin.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Database.searchHistoryList.clear();
+                            mAdapter.notifyDataChanged();
+                        }
+                    });
                     StrSearch_content = search_context.getText().toString().trim();
                     StrSearch_content = StrSearch_content.replaceAll("[\\p{Punct}\\p{Space}\\p{XDigit}\\p{Lower}\\p{Upper}]+", "");//去除字符串中的数字、标点、英文字母、空格等。
+
+                    /** 判断是否需要加入历史搜索数据中 **/
                     if(!StrSearch_content.isEmpty()){
                         if(Database.searchHistoryList.size()>= 1){
                             for (Iterator<String> iterator = Database.searchHistoryList.iterator(); iterator.hasNext(); ) {
-                                if(StrSearch_content.equals(iterator.next())){
+                                if(StrSearch_content.equals(iterator.next())){  //在for循环中，删除重复的历史搜素内容
                                     iterator.remove();
                                     break;
                                 }                            }
-                            Database.searchHistoryList.add(0, StrSearch_content);
+                            Database.searchHistoryList.add(0, StrSearch_content);//数据加入历史搜索中
                             mAdapter.notifyDataChanged();//通知历史搜索框视图更新}
                         }else{
-                            Database.searchHistoryList.add(0, StrSearch_content);
+                            Database.searchHistoryList.add(0, StrSearch_content);//数据加入历史搜索中
                             mAdapter.notifyDataChanged();//通知历史搜索框视图更新
                         }
 
 
-
+                        /** 判断要搜索的内容跟菜单是否有相同的字 **/
                         for (int i = 0;i<DishDatabase.dish_name.length;i++){
                             for (int j = 0;j<DishDatabase.dish_name[i].length;j++){
                                 if((DishDatabase.dish_name[i][j].contains(StrSearch_content))){
@@ -113,12 +124,12 @@ public class SearchContentActivity extends AppCompatActivity {
                                 }
                             }
                         }
+                        if(map_search.isEmpty()){
+                            Toast.makeText(SearchContentActivity.this,"没有找到该菜名，请重新搜索！",Toast.LENGTH_SHORT).show();
+                        }
 
 
-                    }
-                    else if(map_search.isEmpty()) {
-                        Toast.makeText(SearchContentActivity.this,"没有找到该菜名，请重新搜索！",Toast.LENGTH_SHORT).show();
-                    } else {
+                    }else {
                         Toast.makeText(SearchContentActivity.this,"请不要输入非法字符，请重新输入中文！",Toast.LENGTH_SHORT).show();
                     }
 
@@ -126,7 +137,7 @@ public class SearchContentActivity extends AppCompatActivity {
                     search_result_recyclerV = (RecyclerView) findViewById(R.id.search_result);
                     assert search_result_recyclerV != null;
                     search_result_recyclerV.setHasFixedSize(true);
-                    final SearchResultAdapter searchResultAdapter = new SearchResultAdapter();
+                    searchResultAdapter = new SearchResultAdapter();
                     search_result_recyclerV.setAdapter(searchResultAdapter);
                     searchResultAdapter.searchResult = SearchContentActivity.this;
 
@@ -149,6 +160,32 @@ public class SearchContentActivity extends AppCompatActivity {
             }
         };
         mFlowLayout.setAdapter(mAdapter);
+
+        /** 历史标签的事件监听 **/
+        mFlowLayout.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
+            @Override
+            public boolean onTagClick(View view, int position, FlowLayout parent) {
+                /** 判断历史标签搜索的内容跟菜单是否有相同的字 **/
+                map_search.clear();
+                search_num = 0;
+                for (int i = 0;i< DishDatabase.dish_name.length;i++){
+                    for (int j = 0;j< DishDatabase.dish_name[i].length;j++){
+                        if((DishDatabase.dish_name[i][j].contains(Database.searchHistoryList.get(position)))){
+                            DishDatabase.dishDatabase_search = DishDatabase.getMenuData().get("["+i+"]["+j+"]");
+                            map_search.put(""+search_num,DishDatabase.dishDatabase_search);
+                            search_num +=1;
+                        }
+                    }
+                }
+                if(map_search.isEmpty()) {
+                    Toast.makeText(SearchContentActivity.this,"没有找到该菜名，请重新搜索！",Toast.LENGTH_SHORT).show();
+                }
+                searchResultAdapter.notifyDataSetChanged();
+
+                return true;
+            }
+        });
+
 
 
     }
