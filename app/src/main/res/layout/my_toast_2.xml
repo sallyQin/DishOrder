@@ -7,14 +7,14 @@
         <TextView
             android:paddingTop="12dp"
             android:paddingBottom="12dp"
-            android:paddingLeft="17dp"
-            android:paddingRight="12dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:background="#FFC1C1"
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="登录成功！"
-            android:background="#7EC0EE"
-            android:textColor="#111111"
+            android:text="卡号、密码或验证码不正确，请重新输入！"
+            android:textColor="#FF0000"
             android:textSize="16sp" />
     </LinearLayout>
 

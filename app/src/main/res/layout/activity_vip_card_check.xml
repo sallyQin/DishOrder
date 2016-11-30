@@ -28,7 +28,7 @@
         <TextView
             android:paddingLeft="10dp"
             android:layout_marginBottom="35dp"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="#4682B4"
             android:text="@string/vipTitle"
@@ -63,7 +63,10 @@
                 android:layout_width="80dp"
                 android:layout_height="match_parent" />
             <EditText
+                android:id="@+id/vipCard_num"
                 android:focusableInTouchMode="true"
+                android:maxLength="10"
+                android:maxLines="1"
                 android:background="@drawable/shape_edit"
                 android:layout_width="190dp"
                 android:layout_height="match_parent" />
@@ -87,7 +90,11 @@
                 android:layout_width="80dp"
                 android:layout_height="match_parent" />
             <EditText
+                android:id="@+id/code"
                 android:focusableInTouchMode="true"
+                android:maxLines="1"
+                android:inputType="number"
+                android:maxLength="6"
                 android:background="@drawable/shape_edit"
                 android:layout_width="190dp"
                 android:layout_height="match_parent" />
@@ -111,15 +118,15 @@
                 android:layout_width="80dp"
                 android:layout_height="match_parent" />
             <EditText
-                android:id="@+id/etCheck"
+                android:id="@+id/verification_Check"
+                android:maxLines="1"
+                android:maxLength="4"
                 android:background="@drawable/shape_edit"
                 android:layout_width="80dp"
                 android:layout_height="match_parent" />
 
             <LinearLayout
                 android:id="@+id/verification_code"
-                android:paddingLeft="12dp"
-                android:paddingRight="12dp"
                 android:layout_marginLeft="12dp"
                 android:background="#EEE0E5"
                 android:layout_width="wrap_content"
@@ -138,7 +145,7 @@
                         android:id="@+id/tvHideA"
                         android:layout_width="43dp"
                         android:layout_height="match_parent"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:gravity="center"
                         android:visibility="gone" />
 
@@ -146,7 +153,7 @@
                         android:id="@+id/tvHideB"
                         android:layout_width="43dp"
                         android:layout_height="match_parent"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:gravity="center"
                         android:visibility="gone" />
 
@@ -154,7 +161,7 @@
                         android:id="@+id/tvHideC"
                         android:layout_width="43dp"
                         android:layout_height="match_parent"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:gravity="center"
                         android:visibility="gone" />
 
@@ -162,7 +169,7 @@
                         android:id="@+id/tvHideD"
                         android:layout_width="43dp"
                         android:layout_height="match_parent"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:gravity="center"
                         android:visibility="gone" />
                 </LinearLayout>
@@ -213,6 +220,8 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:background="#4F94CD"
         android:textSize="22sp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
         android:text="@string/text"
         android:gravity="center"
         android:layout_gravity="center"
@@ -224,6 +233,14 @@
         android:textColor="#303030"
         android:textSize="16sp"
         android:text="@string/hint1"
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+    <TextView
+        android:layout_marginTop="9dp"
+        android:paddingLeft="45dp"
+        android:textColor="#303030"
+        android:textSize="16sp"
+        android:text="@string/hint2"
         android:layout_width="match_parent"
         android:layout_height="30dp" />
 </LinearLayout>

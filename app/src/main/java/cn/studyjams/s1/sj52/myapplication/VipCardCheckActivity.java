@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +14,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.Random;
+import cn.studyjams.s1.sj52.myapplication.database.VipCardDatabase;
 
 public class VipCardCheckActivity extends AppCompatActivity {
 
@@ -28,8 +29,6 @@ public class VipCardCheckActivity extends AppCompatActivity {
     private ImageView ivNumD;
     LayoutInflater inflater;
     View view;
-    View view1;
-    Toast toast1;
     Toast toast;
     Button btnCheck;
     EditText etCheck;
@@ -37,13 +36,17 @@ public class VipCardCheckActivity extends AppCompatActivity {
     String numStrTmp = "";
     String numStr = "";
     private int[] numArray = new int[4];
-    private int[] colorArray = new int[6];
+    private int[] colorArray = new int[7];
+    EditText vipCard_num_ed;
+    EditText code_ed;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vip_card_check);
-
+        vipCard_num_ed = (EditText) findViewById(R.id.vipCard_num);
+        code_ed = (EditText) findViewById(R.id.code);
         tvHideA = (TextView) findViewById(R.id.tvHideA);
         tvHideB = (TextView) findViewById(R.id.tvHideB);
         tvHideC = (TextView) findViewById(R.id.tvHideC);
@@ -52,48 +55,98 @@ public class VipCardCheckActivity extends AppCompatActivity {
         ivNumB = (ImageView) findViewById(R.id.ivNumB);
         ivNumC = (ImageView) findViewById(R.id.ivNumC);
         ivNumD = (ImageView) findViewById(R.id.ivNumD);
-        etCheck = (EditText) findViewById(R.id.etCheck);
+        etCheck = (EditText) findViewById(R.id.verification_Check);
         btnCheck = (Button) findViewById(R.id.btnCheck);
         verification = (LinearLayout) findViewById(R.id.verification_code);
 
+        setNum(); //初始验证码
 
-        setNum();
-
-        verification.setOnClickListener(new View.OnClickListener() { //设置“验证码”的 监听器
+        /** 设置“验证码”的 监听器 **/
+        verification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setNum();
             }
         });
 
-        btnCheck.setOnClickListener(new View.OnClickListener() {  //设置“查询”按钮的 监听器
+        /** 设置“查询”按钮的 监听器 **/
+        btnCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (etCheck.getText().toString().trim().length() > 0) {
+                String verification_Check_ed = etCheck.getText().toString();
+                String vipCard_num_edTxt = vipCard_num_ed.getText().toString();
+                String code_edTxt = code_ed.getText().toString();
 
-                    if (numStr.equals(etCheck.getText().toString())) {//自定义toast字体。
-                        inflater = LayoutInflater
-                                .from(getApplicationContext());
-                        view = inflater.inflate(R.layout.my_toast,(ViewGroup) findViewById(R.id.vip_pager),false);
-                        toast = Toast.makeText(VipCardCheckActivity.this,"验证码输入正确！",Toast.LENGTH_LONG);
-                        toast.setView(view);
-                        toast.show();
+                if (verification_Check_ed.trim().length() > 0) {
+                    if (numStr.equals(verification_Check_ed)) { //下列的Toast，都是自定义的字体和背景色。
+                        if(!TextUtils.isEmpty(vipCard_num_edTxt) && !TextUtils.isEmpty(code_edTxt)){
 
-                    } else {//自定义toast字体
-                        view1 = inflater.inflate(R.layout.my_toast_1,(ViewGroup) findViewById(R.id.vip_pager),false);
-                        toast1 = Toast.makeText(VipCardCheckActivity.this,"验证码输入有误，请重新输入！",Toast.LENGTH_LONG);
-                        toast1.setView(view1);
-                        toast1.show();
+                            boolean find = false;
+                            for(int i = 1;i <= VipCardDatabase.getDemoVIPNum().size();i++){
+                                if(VipCardDatabase.getDemoVIPNum().get(i).vipCard_num.equalsIgnoreCase(vipCard_num_edTxt) && VipCardDatabase.getDemoVIPNum().get(i).code.equals(code_edTxt)) {
+                                    inflater = LayoutInflater.from(getApplicationContext());
+                                    view = inflater.inflate(R.layout.my_toast,(ViewGroup) findViewById(R.id.vip_pager),false);
+                                    toast = Toast.makeText(VipCardCheckActivity.this,"登录成功！",Toast.LENGTH_LONG);
+                                    toast.setView(view);
+                                    toast.show();
+                                    find = true;
+                                    break;
+                                }
+                            }
+                            if (!find) {
+                                inflater = LayoutInflater.from(getApplicationContext());
+                                view = inflater.inflate(R.layout.my_toast_1,(ViewGroup) findViewById(R.id.vip_pager),false);
+                                toast = Toast.makeText(VipCardCheckActivity.this,"您输入验证码不正确，请重新输入！",Toast.LENGTH_LONG);
+                                toast.setView(view);
+                                toast.show();
+                            }
+                        }else{
+                            inflater = LayoutInflater.from(getApplicationContext());
+                            view = inflater.inflate(R.layout.my_toast_3,(ViewGroup) findViewById(R.id.vip_pager),false);
+                            toast = Toast.makeText(VipCardCheckActivity.this,"请输入卡号或密码！",Toast.LENGTH_LONG);
+                            toast.setView(view);
+                            toast.show();
+                        }
+                    } else {
+                        if(!TextUtils.isEmpty(vipCard_num_edTxt) && !TextUtils.isEmpty(code_edTxt)){
 
+                            boolean find = false;
+                            for(int i = 1;i <= VipCardDatabase.getDemoVIPNum().size();i++){
+                                if(VipCardDatabase.getDemoVIPNum().get(i).vipCard_num.equalsIgnoreCase(vipCard_num_edTxt) && VipCardDatabase.getDemoVIPNum().get(i).code.equals(code_edTxt)) {
+                                    inflater = LayoutInflater.from(getApplicationContext());
+                                    view = inflater.inflate(R.layout.my_toast_1,(ViewGroup) findViewById(R.id.vip_pager),false);
+                                    toast = Toast.makeText(VipCardCheckActivity.this,"您输入验证码不正确，请重新输入！",Toast.LENGTH_LONG);
+                                    toast.setView(view);
+                                    toast.show();
+                                    find = true;
+                                    break;
+                                }
+                            }
+
+                            if (!find) {
+                                inflater = LayoutInflater.from(getApplicationContext());
+                                view = inflater.inflate(R.layout.my_toast_2,(ViewGroup) findViewById(R.id.vip_pager),false);
+                                toast = Toast.makeText(VipCardCheckActivity.this,"您输入的卡号、密码或验证码不正确，请重新输入！",Toast.LENGTH_LONG);
+                                toast.setView(view);
+                                toast.show();
+                            }
+                        }else{
+                            inflater = LayoutInflater.from(getApplicationContext());
+                            view = inflater.inflate(R.layout.my_toast_4,(ViewGroup) findViewById(R.id.vip_pager),false);
+                            toast = Toast.makeText(VipCardCheckActivity.this,"请输入上述几项后，再点击-查询！",Toast.LENGTH_LONG);
+                            toast.setView(view);
+                            toast.show();
+                        }
                     }
                 } else {
-                    Toast.makeText(VipCardCheckActivity.this,"请输入上述几项后，再点击-查询！",Toast.LENGTH_LONG).show();
+                    inflater = LayoutInflater.from(getApplicationContext());
+                    view = inflater.inflate(R.layout.my_toast_4,(ViewGroup) findViewById(R.id.vip_pager),false);
+                    toast = Toast.makeText(VipCardCheckActivity.this,"请输入上述几项后，再点击-查询！",Toast.LENGTH_LONG);
+                    toast.setView(view);
+                    toast.show();
                 }
-
             }
-
-
         });}
 
 
@@ -116,13 +169,14 @@ public class VipCardCheckActivity extends AppCompatActivity {
         colorArray[3] = 0xFF00FF00; // GREEN
         colorArray[4] = 0xFF0000FF; // BLUE
         colorArray[5] = 0xFF00FFFF; // CYAN
+        colorArray[6] = 0xFFFF7F00; //ORANGE
 
-        int randomColorId = new Random().nextInt(6);
+        int randomColorId = new Random().nextInt(7);
         return colorArray[randomColorId];
     }
 
     /**
-     * To set verification code
+     * 设置随机的验证码
      * */
     public void setNum() {
 
@@ -165,6 +219,4 @@ public class VipCardCheckActivity extends AppCompatActivity {
 
         return bitmap;
     }
-
-
 }

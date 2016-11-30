@@ -22,7 +22,8 @@
     <string name="password">密 码：</string>
     <string name="verification_code">验证码：</string>
     <string name="text">查 询</string>
-    <string name="hint1">提示: 磁卡初始密码为卡背面的6位数字</string>
+    <string name="hint1">提示: 刮开磁卡密码涂层，密码为6位数字。</string>
+    <string name="hint2"> \t\t\t\t卡号共10位,不区分大小写。</string>
     <string name="mytoast_text">验证码输入正确！</string>
     <string name="mytoast1_text">验证码输入有误，请重新输入！</string>
     <string name="search_hint">请输入菜名</string>
