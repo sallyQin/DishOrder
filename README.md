@@ -7,3 +7,4 @@
 #####4.历史搜索功能
 #####5.通过主界面中八个子图进入各类分菜单
 ![](https://github.com/sallyQin/DishOrder/raw/master/drawable/demo.gif) 
+![](https://github.com/sallyQin/DishOrder/raw/master/drawable/demo1.gif) 
