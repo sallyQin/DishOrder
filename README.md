@@ -7,6 +7,6 @@
 #####4.历史搜索功能
 #####5.通过主界面中八个子图进入各类分菜单
 ![](https://github.com/sallyQin/DishOrder/raw/master/app/demo.gif) 
-![](https://github.com/sallyQin/DishOrder/raw/master/drawable/demo1.gif) 
-![](https://github.com/sallyQin/DishOrder/raw/master/app/src/main/res/drawable/demo2.gif) 
-![image](https://github.com/sallyQin/DishOrder/raw/master/demo3.gif) 
+![](https://github.com/sallyQin/DishOrder/raw/master/app/src/main/res/drawabl/demo1.gif) 
+![image](https://github.com/sallyQin/DishOrder/raw/master/app/src/main/res/drawable/demo2.gif) 
+
