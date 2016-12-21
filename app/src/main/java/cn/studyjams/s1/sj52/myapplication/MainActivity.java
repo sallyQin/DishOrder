@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
     private int page = 0;
     static int index;
     TextView searchText;
+    public static final int SEARCHCONTENT_REQUESTCODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
 
         for (int i = 0; i < pager.size(); i++) {
             Button bt = new Button(this);
-            bt.setLayoutParams(new ViewGroup.LayoutParams(39, 39));      // （设置子veiw在父view的高宽）
+            bt.setLayoutParams(new ViewGroup.LayoutParams(39, 39));      // （设置子view在父view的高宽）
             bt.setBackgroundResource(android.R.drawable.radiobutton_off_background);
             viewPager_dot = (LinearLayout) findViewById(R.id.viewPager_dot);
             if (viewPager_dot != null) {

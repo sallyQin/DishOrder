@@ -50,6 +50,12 @@ public class SearchContentActivity extends AppCompatActivity {
         search_go= (ImageView) findViewById(R.id.search_go);
 
         /** 设置“返回主界面”的监听器 **/
+        return_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              finish();
+            }
+        });
 
         /** 搜索"GO"事件监听 **/
         search_go.setOnClickListener(new View.OnClickListener() {
@@ -59,13 +65,6 @@ public class SearchContentActivity extends AppCompatActivity {
                 map_search.clear();
                 search_num = 0;
                 if(search_context.getText() != null){
-                    return_home.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent intent = new Intent(SearchContentActivity.this,MainActivity.class);
-                            startActivity(intent);
-                        }
-                    });
 
                     /** 设置 “编辑框”监听器 **/
                     search_context.setOnClickListener(new View.OnClickListener() {
