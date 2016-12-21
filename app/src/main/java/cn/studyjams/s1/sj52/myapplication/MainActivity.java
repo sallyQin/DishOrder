@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
     private int page = 0;
     static int index;
     TextView searchText;
-    public static final int SEARCHCONTENT_REQUESTCODE = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
