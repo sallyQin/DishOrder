@@ -79,22 +79,19 @@ public class VipCardCheckActivity extends AppCompatActivity {
                 String code_edTxt = code_ed.getText().toString();
 
                 if (verification_Check_ed.trim().length() > 0) {
-                    if (numStr.equals(verification_Check_ed)) { //下列的Toast，都是自定义的字体和背景色。
+                    if (numStr.equals(verification_Check_ed)) {
                         if(!TextUtils.isEmpty(vipCard_num_edTxt) && !TextUtils.isEmpty(code_edTxt)){
 
                             boolean find = false;
                             for(int i = 1;i <= VipCardDatabase.getDemoVIPNum().size();i++){
                                 if(VipCardDatabase.getDemoVIPNum().get(i).vipCard_num.equalsIgnoreCase(vipCard_num_edTxt) && VipCardDatabase.getDemoVIPNum().get(i).code.equals(code_edTxt)) {
-                                    inflater = LayoutInflater.from(getApplicationContext());
-                                    view = inflater.inflate(R.layout.my_toast,(ViewGroup) findViewById(R.id.vip_pager),false);
-                                    toast = Toast.makeText(VipCardCheckActivity.this,"登录成功！",Toast.LENGTH_LONG);
-                                    toast.setView(view);
+                                    toast = Toast.makeText(VipCardCheckActivity.this,"登录成功。您的VIP卡余额为："+VipCardDatabase.getDemoVIPNum().get(i).balance,Toast.LENGTH_LONG);
                                     toast.show();
                                     find = true;
                                     break;
                                 }
                             }
-                            if (!find) {
+                            if (!find) {//下列的Toast，都是自定义的字体和背景色。
                                 inflater = LayoutInflater.from(getApplicationContext());
                                 view = inflater.inflate(R.layout.my_toast_1,(ViewGroup) findViewById(R.id.vip_pager),false);
                                 toast = Toast.makeText(VipCardCheckActivity.this,"您输入验证码不正确，请重新输入！",Toast.LENGTH_LONG);
