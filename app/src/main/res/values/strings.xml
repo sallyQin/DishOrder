@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ViewPager</string>
+    <string name="app_name">菜单Menu</string>
     <string name="specialsText">优惠活动</string>
     <string name="search_icon">搜索</string>
     <string name="hint">VIP卡余额查询</string>
