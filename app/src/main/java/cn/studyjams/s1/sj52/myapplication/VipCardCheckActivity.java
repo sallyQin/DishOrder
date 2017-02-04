@@ -88,9 +88,11 @@ public class VipCardCheckActivity extends AppCompatActivity {  //Vip卡查询界
                                 if(VipCardDatabase.getDemoVIPNum().get(i).vipCard_num.equalsIgnoreCase(vipCard_num_edTxt) && VipCardDatabase.getDemoVIPNum().get(i).code.equals(code_edTxt)) {
                                     inflater = LayoutInflater.from(getApplicationContext());
                                     view = inflater.inflate(R.layout.my_toast,(ViewGroup) findViewById(R.id.vip_pager),false);
-                                    toast = Toast.makeText(VipCardCheckActivity.this,"登录成功！",Toast.LENGTH_LONG);
+                                    toast = Toast.makeText(VipCardCheckActivity.this,"登录成功！",Toast.LENGTH_SHORT);
                                     toast.setView(view);
                                     toast.show();
+                                    String toastBalance_str = "您的VIP卡余额为：" + VipCardDatabase.getDemoVIPNum().get(i).balance;
+                                    Toast.makeText(VipCardCheckActivity.this,toastBalance_str,Toast.LENGTH_LONG).show();
                                     find = true;
                                     break;
                                 }
@@ -116,7 +118,7 @@ public class VipCardCheckActivity extends AppCompatActivity {  //Vip卡查询界
                             for(int i = 1;i <= VipCardDatabase.getDemoVIPNum().size();i++){
                                 if(VipCardDatabase.getDemoVIPNum().get(i).vipCard_num.equalsIgnoreCase(vipCard_num_edTxt) && VipCardDatabase.getDemoVIPNum().get(i).code.equals(code_edTxt)) {
                                     inflater = LayoutInflater.from(getApplicationContext());
-                                    view = inflater.inflate(R.layout.my_toast_1,(ViewGroup) findViewById(R.id.vip_pager),false);
+                                    view = inflater.inflate(R.layout.my_toast_5,(ViewGroup) findViewById(R.id.vip_pager),false);
                                     toast = Toast.makeText(VipCardCheckActivity.this,"您输入验证码不正确，请重新输入！",Toast.LENGTH_LONG);
                                     toast.setView(view);
                                     toast.show();
