@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by Apc on 2016/7/22.
  */
-public class Database {
+public class Database { //菜色分类data
    public static String string[] = {"特色菜","特价菜","热菜.炒菜","冷菜","营养汤羹","甜点.冷饮","特色主食","酒水.饮料" };
    public static List<String> searchHistoryList = new ArrayList<String>();
 

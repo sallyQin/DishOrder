@@ -14,10 +14,10 @@ import android.widget.TextView;
 import cn.studyjams.s1.sj52.myapplication.database.Order;
 
 
-public class CheckOutActivity extends AppCompatActivity {
-    CheckoutAdapter CheckoutAdapter;
-    Button confirm_button;
-    static TextView total_sum;
+public class CheckOutActivity extends AppCompatActivity { //结账界面
+    CheckoutAdapter CheckoutAdapter; //结账界面列表的adapter
+    Button confirm_button;  //确认下单按钮
+    static TextView total_sum_txt; //总消费金额数
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class CheckOutActivity extends AppCompatActivity {
 
         final LinearLayout checkoutLayout = (LinearLayout) findViewById(R.id.checkout_layout);
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        total_sum = (TextView) findViewById(R.id.total_sum);
+        total_sum_txt = (TextView) findViewById(R.id.total_sum);
 /**
  * 设置“确认菜单”按钮的监听器&设置弹出的dialog
  * */
@@ -60,11 +60,13 @@ public class CheckOutActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
-        reset();}
+
+        reset();
+    }
 
 
-    public static void reset(){
-        total_sum.setText(""+ Order.getOrdersList());
+    public static void reset(){  //j结账总金额--重置
+        total_sum_txt.setText(""+ Order.getOrdersList());
         Order.total = 0;
     }
 

@@ -25,20 +25,21 @@ import java.util.Map;
 import cn.studyjams.s1.sj52.myapplication.database.Database;
 import cn.studyjams.s1.sj52.myapplication.database.DishDatabase;
 
-public class SearchContentActivity extends AppCompatActivity {
+public class SearchContentActivity extends AppCompatActivity {  //“搜索”内容的界面
 
     ImageView return_home;
     EditText search_context;
     ImageView cancel_action;
     ImageView search_go;
-    public static String StrSearch_content;
-    public static int search_num = 0;
+    public static String StrSearch_content;//用户搜索内容保存
+    public static int search_num = 0;  //用于记录历史搜索号的排序
     RecyclerView search_result_recyclerV;
     SearchResultAdapter searchResultAdapter;
-    ImageView history_bin;
+    ImageView history_bin; //垃圾桶
     public static Map<String,DishDatabase> map_search = new HashMap<>();
-    TagFlowLayout  mFlowLayout;
-    private TagAdapter<String> mAdapter;
+    TagFlowLayout  mFlowLayout; //标签流式布局
+    private TagAdapter<String> mAdapter;//标签流式布局适配器
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,19 +54,18 @@ public class SearchContentActivity extends AppCompatActivity {
         return_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              finish();
+                finish();
             }
         });
 
         /** 搜索"GO"事件监听 **/
-        search_go.setOnClickListener(new View.OnClickListener() {
+        search_go.setOnClickListener(new View.OnClickListener() { /** 搜索"GO"事件监听 **/
 
             @Override
             public void onClick(View v) {
                 map_search.clear();
                 search_num = 0;
                 if(search_context.getText() != null){
-
                     /** 设置 “编辑框”监听器 **/
                     search_context.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -160,7 +160,7 @@ public class SearchContentActivity extends AppCompatActivity {
         };
         mFlowLayout.setAdapter(mAdapter);
 
-        /** 历史标签的事件监听 **/
+        /** 历史标签的事件监听 **/  //TagFlowLayout：标签流式布局
         mFlowLayout.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
             @Override
             public boolean onTagClick(View view, int position, FlowLayout parent) {

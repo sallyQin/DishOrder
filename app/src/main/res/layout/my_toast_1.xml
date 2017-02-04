@@ -13,7 +13,7 @@
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="验证码输入有误，请重新输入！"
+            android:text="验证码正确！但卡号或密码不正确！"
             android:textColor="#FF0000"
             android:textSize="16sp" />
     </LinearLayout>

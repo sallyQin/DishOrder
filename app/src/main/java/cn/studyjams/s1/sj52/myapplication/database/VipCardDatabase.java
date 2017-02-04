@@ -8,7 +8,7 @@ import java.util.Map;
  * Created by 1 on 2016/11/29.
  */
 
-public class VipCardDatabase {
+public class VipCardDatabase {  //VIP卡预设的几组数据data
     public String vipCard_num;
     public String code;
     public String balance;

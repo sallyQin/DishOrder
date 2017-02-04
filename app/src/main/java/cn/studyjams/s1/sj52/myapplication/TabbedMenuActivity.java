@@ -3,7 +3,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 
-public class TabbedMenuActivity extends AppCompatActivity {
+public class TabbedMenuActivity extends AppCompatActivity {  //“菜单”界面
 
     RecyclerView categoryRecyclerView;
     RecyclerView itemsRecyclerView;

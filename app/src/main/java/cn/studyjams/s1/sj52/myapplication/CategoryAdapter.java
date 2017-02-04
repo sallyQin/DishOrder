@@ -12,7 +12,7 @@ import cn.studyjams.s1.sj52.myapplication.database.Database;
 /**
  * Created by Apc on 2016/7/22.
  */
-public class CategoryAdapter extends RecyclerView.Adapter {
+public class CategoryAdapter extends RecyclerView.Adapter {  //菜品种类选择的适配器
 
     public static int selected;
 
@@ -57,7 +57,11 @@ public class CategoryAdapter extends RecyclerView.Adapter {
         ((TextView) holder.itemView.findViewById(R.id.rvtxt)).setText(Database.string[position]);
 
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() { //设置itemView的监听事件。
+
+        /**
+         * 设置itemView的监听事件。
+         * ***/
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(selected != position){

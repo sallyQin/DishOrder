@@ -25,7 +25,7 @@ import java.util.TimerTask;
 
 
 
-public class MainActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
+public class MainActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {  //主界面
 
     ViewPager viewPager;
     View view1, view2, view3;
@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
     private int page = 0;
     static int index;
     TextView searchText;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
 
         for (int i = 0; i < pager.size(); i++) {
             Button bt = new Button(this);
-            bt.setLayoutParams(new ViewGroup.LayoutParams(39, 39));      // （设置子view在父view的高宽）
+            bt.setLayoutParams(new ViewGroup.LayoutParams(39, 39));      // （设置子veiw在父view的高宽）
             bt.setBackgroundResource(android.R.drawable.radiobutton_off_background);
             viewPager_dot = (LinearLayout) findViewById(R.id.viewPager_dot);
             if (viewPager_dot != null) {
@@ -153,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
     }
 
     @Override
-    public void onPageSelected(int position) {
+    public void onPageSelected(int position) {  //设置 当viewPager被选中时。
         for (int i = 0; i < viewPager_dot.getChildCount(); i++) {
             Button b = (Button) viewPager_dot.getChildAt(i);
             if (i == position) {
@@ -204,7 +203,9 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
     }
 
 
-
+    /**
+     * 设置八个icon图的监听器
+     * */
     public void specialsClick(View view) {
 
         Intent intent = new Intent(this,TabbedMenuActivity.class);

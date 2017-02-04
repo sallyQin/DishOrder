@@ -11,7 +11,7 @@ import cn.studyjams.s1.sj52.myapplication.R;
 /**
  * Created by Apc on 2016/7/25.
  */
-public class DishDatabase {
+public class DishDatabase { //所有菜肴数据data
     public int dish_pic;
     public String dish_name1;
     public String main_material1;

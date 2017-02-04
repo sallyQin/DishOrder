@@ -19,15 +19,15 @@ import cn.studyjams.s1.sj52.myapplication.database.Order;
 /**
  * Created by Apc on 2016/8/7.
  */
-public class CheckoutAdapter extends RecyclerView.Adapter {
-    SimpleDraweeView increBtn;
-    SimpleDraweeView decreBtn;
+public class CheckoutAdapter extends RecyclerView.Adapter {  //结账界面列表的适配器
+    SimpleDraweeView increBtn; //增加数量
+    SimpleDraweeView decreBtn;//减少数量
     TextView quantity;
     TextView dishName;
     TextView dishPrice;
     TextView dishNum;
     TextView dishSum;
-    static int dishesSum;
+    static int dishesSum;  //合计：金额数
 
 
     public class CheckoutViewHold extends RecyclerView.ViewHolder{

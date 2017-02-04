@@ -17,7 +17,7 @@ import android.widget.Toast;
 import java.util.Random;
 import cn.studyjams.s1.sj52.myapplication.database.VipCardDatabase;
 
-public class VipCardCheckActivity extends AppCompatActivity {
+public class VipCardCheckActivity extends AppCompatActivity {  //Vip卡查询界面
 
     private TextView tvHideA;
     private TextView tvHideB;
@@ -55,9 +55,9 @@ public class VipCardCheckActivity extends AppCompatActivity {
         ivNumB = (ImageView) findViewById(R.id.ivNumB);
         ivNumC = (ImageView) findViewById(R.id.ivNumC);
         ivNumD = (ImageView) findViewById(R.id.ivNumD);
-        etCheck = (EditText) findViewById(R.id.verification_Check);
+        etCheck = (EditText) findViewById(R.id.verification_Check);  //用户输入的验证码
         btnCheck = (Button) findViewById(R.id.btnCheck);
-        verification = (LinearLayout) findViewById(R.id.verification_code);
+        verification = (LinearLayout) findViewById(R.id.verification_code);  //系统随机给出的 验证码
 
         setNum(); //初始验证码
 
@@ -74,27 +74,31 @@ public class VipCardCheckActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String verification_Check_ed = etCheck.getText().toString();
+                String verification_Check_ed = etCheck.getText().toString(); //记录系统随机给出的 验证码
                 String vipCard_num_edTxt = vipCard_num_ed.getText().toString();
                 String code_edTxt = code_ed.getText().toString();
 
                 if (verification_Check_ed.trim().length() > 0) {
-                    if (numStr.equals(verification_Check_ed)) {
+                   String temp =  numStr;
+                    if (numStr.equals(verification_Check_ed)) { //下列的Toast，都是自定义的字体和背景色。
                         if(!TextUtils.isEmpty(vipCard_num_edTxt) && !TextUtils.isEmpty(code_edTxt)){
 
                             boolean find = false;
                             for(int i = 1;i <= VipCardDatabase.getDemoVIPNum().size();i++){
                                 if(VipCardDatabase.getDemoVIPNum().get(i).vipCard_num.equalsIgnoreCase(vipCard_num_edTxt) && VipCardDatabase.getDemoVIPNum().get(i).code.equals(code_edTxt)) {
-                                    toast = Toast.makeText(VipCardCheckActivity.this,"登录成功。您的VIP卡余额为："+VipCardDatabase.getDemoVIPNum().get(i).balance,Toast.LENGTH_LONG);
+                                    inflater = LayoutInflater.from(getApplicationContext());
+                                    view = inflater.inflate(R.layout.my_toast,(ViewGroup) findViewById(R.id.vip_pager),false);
+                                    toast = Toast.makeText(VipCardCheckActivity.this,"登录成功！",Toast.LENGTH_LONG);
+                                    toast.setView(view);
                                     toast.show();
                                     find = true;
                                     break;
                                 }
                             }
-                            if (!find) {//下列的Toast，都是自定义的字体和背景色。
+                            if (!find) {
                                 inflater = LayoutInflater.from(getApplicationContext());
                                 view = inflater.inflate(R.layout.my_toast_1,(ViewGroup) findViewById(R.id.vip_pager),false);
-                                toast = Toast.makeText(VipCardCheckActivity.this,"您输入验证码不正确，请重新输入！",Toast.LENGTH_LONG);
+                                toast = Toast.makeText(VipCardCheckActivity.this,"验证码正确！但卡号或密码不正确！",Toast.LENGTH_LONG);
                                 toast.setView(view);
                                 toast.show();
                             }

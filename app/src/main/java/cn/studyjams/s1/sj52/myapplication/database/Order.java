@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by Apc on 2016/8/7.
  */
-public class Order {
+public class Order {  //所有已点菜的数据记录
 
     public String dishName;
     public int dishPrice;

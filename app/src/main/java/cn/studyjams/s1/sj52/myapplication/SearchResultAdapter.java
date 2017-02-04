@@ -14,7 +14,7 @@ package cn.studyjams.s1.sj52.myapplication;
 /**
  * Created by Apc on 2016/8/14.
  */
-class SearchResultAdapter extends RecyclerView.Adapter{
+class SearchResultAdapter extends RecyclerView.Adapter{  //搜索结果呈现的适配器
     SearchContentActivity searchResult;
 
     private class ViewHold extends RecyclerView.ViewHolder {

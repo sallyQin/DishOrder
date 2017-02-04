@@ -14,7 +14,7 @@ import cn.studyjams.s1.sj52.myapplication.database.Order;
 /**
  * Created by Apc on 2016/7/24.
  */
-public class ItemAdapter extends RecyclerView.Adapter {
+public class ItemAdapter extends RecyclerView.Adapter {  //每个菜品呈现的适配器
     public TabbedMenuActivity tabbedMenuActivity;
 
 
