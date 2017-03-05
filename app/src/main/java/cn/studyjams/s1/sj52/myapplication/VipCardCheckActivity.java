@@ -194,19 +194,19 @@ public class VipCardCheckActivity extends AppCompatActivity {  //Vip卡查询界
         tvHideD.setTextColor(randomColor());
 
         // Num 1
-        Bitmap bmNumA = Bitmap.createBitmap(getBitmapFromView(tvHideA, 30, 80), 0, 0, 30, 80);
+        Bitmap bmNumA = Bitmap.createBitmap(getBitmapFromView(tvHideA,60, 92), 0, 0, 60,92);
         ivNumA.setImageBitmap(bmNumA);
 
         // Num 2
-        Bitmap bmNumB = Bitmap.createBitmap(getBitmapFromView(tvHideB, 30, 80), 0, 0, 30,80);
+        Bitmap bmNumB = Bitmap.createBitmap(getBitmapFromView(tvHideB,60, 92), 0, 0, 60,92);
         ivNumB.setImageBitmap(bmNumB);
 
         // Num 3
-        Bitmap bmNumC = Bitmap.createBitmap(getBitmapFromView(tvHideC, 30, 80), 0, 0, 30, 80);
+        Bitmap bmNumC = Bitmap.createBitmap(getBitmapFromView(tvHideC,60, 92), 0, 0, 60,92);
         ivNumC.setImageBitmap(bmNumC);
 
         // Num 4
-        Bitmap bmNumD = Bitmap.createBitmap(getBitmapFromView(tvHideD, 30, 80), 0, 0, 30, 80);
+        Bitmap bmNumD = Bitmap.createBitmap(getBitmapFromView(tvHideD,60, 92), 0, 0, 60,92);
         ivNumD.setImageBitmap(bmNumD);
     }
 
